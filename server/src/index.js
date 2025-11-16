@@ -4,8 +4,8 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 import connectDB from "./config/db.js";
-import devRoute from "./routes/health.route.js";
 import secureRouter from "./routes/secure.route.js";
+import authRouter from "./routes/auth.route.js";
 
 const app = express();
 
@@ -15,6 +15,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api", secureRouter);
+app.use("/auth", authRouter);
 
 //Health route
 app.get("/health", (req, res) => res.json({ status: "ok", time: new Date() }));

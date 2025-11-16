@@ -13,8 +13,11 @@ router.get("/profile", verifyAccessToken, (req, res) => {
 });
 
 // Restricted example
-router.get("/admin/data", verifyAccessToken, checkRoles, (req, res) =>
-  res.json({ secret: "For admins only" })
+router.get(
+  "/admin/data",
+  verifyAccessToken,
+  checkRoles(["individual", "organization_admin"]),
+  (req, res) => res.json({ secret: "For admins only" })
 );
 
 export default router;

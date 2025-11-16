@@ -8,7 +8,14 @@ const verifyAccessToken = isDev
   ? (req, res, next) => {
       // Inject a dev payload (only for local development)
       req.auth = {
-        payload: { sub: "dev-user", "https://veridocs.com/roles": ["admin"] },
+        payload: {
+          sub: "dev-user",
+          email: "dev@example.com",
+          name: "Dev User",
+          phone: 1234567890,
+          nationalID: "12345678901",
+          "https://veridocs.com/roles": ["admin"],
+        },
       };
       next();
     }
