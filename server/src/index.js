@@ -6,6 +6,7 @@ import helmet from "helmet";
 import connectDB from "./config/db.js";
 import secureRouter from "./routes/secure.route.js";
 import authRouter from "./routes/auth.route.js";
+import verifyRouter from "./routes/verify.route.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api", secureRouter);
 app.use("/auth", authRouter);
+app.use("/verify", verifyRouter);
 
 //Health route
 app.get("/health", (req, res) => res.json({ status: "ok", time: new Date() }));

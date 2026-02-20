@@ -17,7 +17,7 @@ const syncUserProfile = async (req, res) => {
       user = await User.create({
         firstName: name,
         lastName: name,
-        email: email,
+        email,
         phone: payload.phone || 0,
         nationalID: payload.nationalID || "88796778",
         authProvider: {
